@@ -1,0 +1,20 @@
+node_modules/
+dist/
+*.pdf
+
+*.tsbuildinfo
+.npm
+.env
+.env.*
+!.env.example
+
+**/.vscode/*
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+
+**/.DS_Store
+
+# it's fine, this is an assignment
+package-lock.json
+

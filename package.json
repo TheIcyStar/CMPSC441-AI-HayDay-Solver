@@ -1,0 +1,16 @@
+{
+  "name": "cmpsc441-ai-hayday-solver",
+  "version": "1.0.0",
+  "description": "Resource &amp; order fullfilment maximizer for Supercell's HayDay",
+  "homepage": "https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver#readme",
+  "type": "commonjs",
+  "main": "./dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "build:dev": "tsc --sourcemap",
+    "start": "node ./dist/app.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
