@@ -1,5 +1,5 @@
 # CMPSC441-AI-HayDay-Solver
-Resource &amp; order fullfilment maximizer for Supercell's HayDay
+Resource &amp; order fullfilment maximizer for Supercell's Hay Day
 
 ## Documents
 Assignment-related Typst documents are in `docs/`. Opening this project in VSCode will recommend a Typst extension, which can be used to preview these documents.
