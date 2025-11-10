@@ -18,14 +18,9 @@ node --version
 npm install
 ```
 
-3. Build the project
+3. Start the live preview with Vite
 ```sh
-npm run build
-```
-
-4. Run the project
-```sh
-npm run start
+npm run dev
 ```
 
 ### Debugging with VSCode
