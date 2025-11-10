@@ -2,11 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "npm run start",
-            "name": "tsc & debug",
+            "command": "npm run dev",
+            "name": "Start preview",
             "request": "launch",
             "type": "node-terminal",
-            "preLaunchTask": "npm: build:dev",
         }
     ]
 }

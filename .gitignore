@@ -1,20 +1,33 @@
-node_modules/
-dist/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
 *.pdf
 
-*.tsbuildinfo
-.npm
-.env
-.env.*
-!.env.example
-
+# Editor directories and files
 **/.vscode/*
 !**/.vscode/tasks.json
 !**/.vscode/launch.json
 !**/.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 **/.DS_Store
 
 # it's fine, this is an assignment
 package-lock.json
-

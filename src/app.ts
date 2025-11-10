@@ -1,1 +1,0 @@
-console.log("artisinal, human-made AI slop")
