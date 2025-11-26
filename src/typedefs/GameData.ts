@@ -82,19 +82,19 @@ export type Product =
   "CherryJuice"
 
 export type ProductionBuilding =
-"CropField" |
-"Bakery" |
-"FeedMill" |
-"Dairy" |
-"SugarMill" |
-"PopcornPot" |
-"BBQGrill" |
-"PieOven" |
-"Loom" |
-"SewingMachine" |
-"CakeOven" |
-"JuicePress" |
-"IceCreamMaker"
+  "CropField" |
+  "Bakery" |
+  "FeedMill" |
+  "Dairy" |
+  "SugarMill" |
+  "PopcornPot" |
+  "BBQGrill" |
+  "PieOven" |
+  "Loom" |
+  "SewingMachine" |
+  "CakeOven" |
+  "JuicePress" |
+  "IceCreamMaker"
 
 //
 // Item details
