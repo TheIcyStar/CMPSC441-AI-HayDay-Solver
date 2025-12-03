@@ -1,6 +1,12 @@
-import { useState } from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { DesktopPlan } from "./screens/DesktopPlan/Plan";
+import { DesktopInventorySilo } from "./screens/DesktopInventorySilo";
+import { DesktopInventoryBarn } from "./screens/DesktopInventoryBarn";
+import { DesktopOrder } from "./screens/DesktopOrder";
+import { DesktopHomepage } from "./screens/DesktopHomepage";
 import './App.css'
 
+/*
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,3 +26,37 @@ function App() {
 }
 
 export default App
+*/
+
+const router = createBrowserRouter([
+  {
+    path: "/*",
+    element: <DesktopHomepage />,
+  },
+  {
+    path: "/homepage",
+    element: <DesktopHomepage />,
+  },
+  {
+    path: "/desktop-u45-4",
+    element: <DesktopPlan />,
+  },
+  {
+    path: "/desktop-u45-inventory-silo",
+    element: <DesktopInventorySilo />,
+  },
+  {
+    path: "/desktop-u45-3",
+    element: <DesktopOrder />,
+  },
+  {
+    path: "/desktop-u45-inventory-barn",
+    element: <DesktopInventoryBarn />,
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
+}
+
+export default App;

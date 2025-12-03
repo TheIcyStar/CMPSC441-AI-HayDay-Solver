@@ -1,0 +1,1 @@
+export { DesktopInventoryBarn } from "./DesktopInventoryBarn";
