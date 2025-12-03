@@ -28,7 +28,7 @@ export const DesktopHomepage = (): JSX.Element => {
       data-model-id="1:4"
     >
       <aside className="flex flex-col gap-[39px] pt-[180px]">
-        <div className="flex items-center justify-center w-[118px] h-[115px] ml-[26px] mb-[39px] -translate-y-4 animate-fade-in opacity-0 [--animation-delay:0ms]">
+        <div className="flex items-center justify-center w-[118px] h-[115px] ml-[26px] mb-[39px] -translate-y-4 animate-fade-in [--animation-delay:0ms]">
           <img
             className="w-[118px] h-[115px] object-cover"
             alt="Logo"
@@ -36,11 +36,11 @@ export const DesktopHomepage = (): JSX.Element => {
           />
         </div>
 
-        {navigationItems.map((item,map) => (
+        {navigationItems.map((item, map) => (
           <Link
             key={item.label}
             to={item.path}
-            className={`-translate-y-4 animate-fade-in opacity-0`}
+            className={`-translate-y-4 animate-fade-in`}
             style={{ animationDelay: item.delay }}
           >
             <Button
@@ -56,7 +56,7 @@ export const DesktopHomepage = (): JSX.Element => {
       </aside>
 
       <main className="flex-1 flex items-start justify-center pt-[186px] pl-[77px] pr-[68px]">
-        <Card className="w-full max-w-[1008px] h-[767px] bg-white border-[5px] border-solid border-[#b77203] rounded-none shadow-none -translate-y-4 animate-fade-in opacity-0 [--animation-delay:300ms]" />
+        <Card className="w-full max-w-[1008px] h-[767px] bg-white border-[5px] border-solid border-[#b77203] rounded-none shadow-none -translate-y-4 animate-fade-in [--animation-delay:300ms]" />
       </main>
     </div>
   );

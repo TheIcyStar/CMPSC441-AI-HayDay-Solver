@@ -34,7 +34,7 @@ export const DesktopInventorySilo = (): JSX.Element => {
       data-model-id="22:49"
     >
       <aside className="flex flex-col pt-[26px] pl-[26px]">
-        <div className="w-[118px] h-[115px] mb-[41px] translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:0ms]">
+        <div className="w-[118px] h-[115px] mb-[41px] translate-y-[-1rem] animate-fade-in [--animation-delay:0ms]">
           <img
             className="w-full h-full object-cover"
             alt="Logo"
@@ -47,7 +47,7 @@ export const DesktopInventorySilo = (): JSX.Element => {
             <Link
               key={item.label}
               to={item.path}
-              className={`translate-y-[-1rem] animate-fade-in opacity-0`}
+              className={`translate-y-[-1rem] animate-fade-in`}
               style={
                 {
                   "--animation-delay": `${(index + 1) * 200}ms`,
@@ -55,11 +55,10 @@ export const DesktopInventorySilo = (): JSX.Element => {
               }
             >
               <Button
-                className={`w-[287px] h-16 rounded-[10px] text-white text-[40px] [font-family:'Inter',Helvetica] font-normal transition-colors ${
-                  item.isActive
+                className={`w-[287px] h-16 rounded-[10px] text-white text-[40px] [font-family:'Inter',Helvetica] font-normal transition-colors ${item.isActive
                     ? "bg-[#6d5d31]"
                     : "bg-[#6e5e32] hover:bg-[#6d5d31]"
-                }`}
+                  }`}
               >
                 {item.label}
               </Button>
@@ -69,7 +68,7 @@ export const DesktopInventorySilo = (): JSX.Element => {
       </aside>
 
       <main className="flex-1 flex flex-col pt-[133px] pl-[108px] pr-[68px]">
-        <div className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms]">
+        <div className="translate-y-[-1rem] animate-fade-in [--animation-delay:800ms]">
           <Tabs defaultValue="silo" className="w-full">
             <TabsList className="h-[53px] bg-transparent p-0 gap-[25px] mb-[53px]">
               <TabsTrigger

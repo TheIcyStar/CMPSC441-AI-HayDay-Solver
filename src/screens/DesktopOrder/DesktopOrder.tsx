@@ -39,12 +39,12 @@ export const DesktopOrder = (): JSX.Element => {
       className="bg-[#cc9d1a] w-full min-w-[1440px] min-h-[1024px] relative"
       data-model-id="1:7"
     >
-      <div className="top-[186px] left-[364px] w-[1008px] h-[767px] border-[5px] border-solid border-[#b77203] absolute bg-white opacity-0 animate-fade-in [--animation-delay:200ms]" />
+      <div className="top-[186px] left-[364px] w-[1008px] h-[767px] border-[5px] border-solid border-[#b77203] absolute bg-white animate-fade-in [--animation-delay:200ms]" />
 
       {navigationItems.map((item, index) => (
         <Link
           key={item.label}
-          className={`absolute ${item.top} left-0 w-[287px] h-16 bg-[#6d5d31] rounded-[10px] block opacity-0 animate-fade-in transition-colors hover:bg-[#7d6d41]`}
+          className={`absolute ${item.top} left-0 w-[287px] h-16 bg-[#6d5d31] rounded-[10px] block animate-fade-in transition-colors hover:bg-[#7d6d41]`}
           style={
             { "--animation-delay": `${index * 100}ms` } as React.CSSProperties
           }
@@ -56,9 +56,9 @@ export const DesktopOrder = (): JSX.Element => {
         </Link>
       ))}
 
-      <div className="absolute top-[249px] left-[624px] w-[720px] h-[602px] bg-[#dfcece] border border-solid border-[#cc9d1a] opacity-0 animate-fade-in [--animation-delay:300ms]" />
+      <div className="absolute top-[249px] left-[624px] w-[720px] h-[602px] bg-[#dfcece] border border-solid border-[#cc9d1a] animate-fade-in [--animation-delay:300ms]" />
 
-      <Button className="absolute top-[788px] left-[1093px] w-[230px] h-[43px] bg-[#b77203] rounded-[15px] border-2 border-solid border-black hover:bg-[#c7a313] transition-colors opacity-0 animate-fade-in [--animation-delay:400ms]">
+      <Button className="absolute top-[788px] left-[1093px] w-[230px] h-[43px] bg-[#b77203] rounded-[15px] border-2 border-solid border-black hover:bg-[#c7a313] transition-colors animate-fade-in [--animation-delay:400ms]">
         <span className="[font-family:'Inter',Helvetica] font-normal text-black text-2xl text-center tracking-[0] leading-[normal]">
           Generate
         </span>
@@ -67,7 +67,7 @@ export const DesktopOrder = (): JSX.Element => {
       {gridSquares.map((square, index) => (
         <div
           key={`square-${index}`}
-          className={`absolute ${square.top} ${square.left} w-[54px] h-[50px] bg-[#fff740] opacity-0 animate-fade-in`}
+          className={`absolute ${square.top} ${square.left} w-[54px] h-[50px] bg-[#fff740] animate-fade-in`}
           style={
             {
               "--animation-delay": `${400 + index * 50}ms`,
@@ -76,7 +76,7 @@ export const DesktopOrder = (): JSX.Element => {
         />
       ))}
 
-      <div className="flex w-[118px] h-[115px] items-center justify-center gap-2.5 p-2.5 absolute top-[26px] left-[26px] bg-[#cc9d1a] opacity-0 animate-fade-in">
+      <div className="flex w-[118px] h-[115px] items-center justify-center gap-2.5 p-2.5 absolute top-[26px] left-[26px] bg-[#cc9d1a] animate-fade-in">
         <img
           className="relative w-[118px] h-[115px] mt-[-10.00px] mb-[-10.00px] ml-[-10.00px] mr-[-10.00px] object-cover"
           alt="Image"
@@ -84,7 +84,7 @@ export const DesktopOrder = (): JSX.Element => {
         />
       </div>
 
-      <div className="top-[301px] left-[679px] w-[129px] h-[120px] absolute bg-white opacity-0 animate-fade-in [--animation-delay:500ms]" />
+      <div className="top-[301px] left-[679px] w-[129px] h-[120px] absolute bg-white animate-fade-in [--animation-delay:500ms]" />
     </div>
   );
 };

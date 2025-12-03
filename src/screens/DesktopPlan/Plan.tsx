@@ -28,7 +28,7 @@ export const DesktopPlan = (): JSX.Element => {
       data-model-id="1:104"
     >
       <header className="flex items-start p-[26px]">
-        <div className="flex items-center justify-center w-[118px] h-[115px] -translate-y-4 animate-fade-in opacity-0">
+        <div className="flex items-center justify-center w-[118px] h-[115px] -translate-y-4 animate-fade-in">
           <img
             className="w-[118px] h-[115px] object-cover"
             alt="Logo"
@@ -43,7 +43,7 @@ export const DesktopPlan = (): JSX.Element => {
             <Link
               key={item.label}
               to={item.path}
-              className="-translate-y-4 animate-fade-in opacity-0"
+              className="-translate-y-4 animate-fade-in"
               style={
                 {
                   "--animation-delay": `${(index + 1) * 100}ms`,
@@ -51,9 +51,8 @@ export const DesktopPlan = (): JSX.Element => {
               }
             >
               <Button
-                className={`w-[287px] h-16 rounded-[10px] ${
-                  item.isActive ? "bg-[#6d5d31]" : "bg-[#6e5e32]"
-                } hover:bg-[#6d5d31] transition-colors`}
+                className={`w-[287px] h-16 rounded-[10px] ${item.isActive ? "bg-[#6d5d31]" : "bg-[#6e5e32]"
+                  } hover:bg-[#6d5d31] transition-colors`}
                 asChild
               >
                 <div className="font-['Inter',Helvetica] font-normal text-white text-[40px] text-center tracking-[0] leading-[normal]">
@@ -65,7 +64,7 @@ export const DesktopPlan = (): JSX.Element => {
         </nav>
 
         <main
-          className="flex-1 pt-[7px] pr-[68px] pb-[70px] -translate-y-4 animate-fade-in opacity-0"
+          className="flex-1 pt-[7px] pr-[68px] pb-[70px] -translate-y-4 animate-fade-in"
           style={{ "--animation-delay": "400ms" } as React.CSSProperties}
         >
           <Card className="w-full h-[767px] bg-white border-[5px] border-solid border-[#b77203] rounded-none shadow-none" />
