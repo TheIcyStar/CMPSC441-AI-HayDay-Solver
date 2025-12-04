@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "HaydayFont";
+  src: url("/assets/fonts/sc_secorigbb.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,13 +21,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-}
-
-@font-face {
-  font-family: "HaydayFont";
-  src: url("/assets/fonts/sc_secorigbb.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
 
 .font-hayday {
