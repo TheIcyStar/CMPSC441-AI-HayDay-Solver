@@ -15,7 +15,14 @@ export type InventoryItemConfig = {
   label: string;
 };
 
-export type OrderSlot = { id: number; /* TODO */ };
+
+export type OrderSlot = {
+  id: number;
+  items: ItemStack[];
+  reward: number;
+  isGenerated: boolean;
+};
+
 export type ProductionStep = { id: number; /* TODO */ };
 
 //
