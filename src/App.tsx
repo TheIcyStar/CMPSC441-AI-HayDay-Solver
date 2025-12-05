@@ -43,8 +43,8 @@ const defaultGameState: GameState = {
   productionBuildings: [],
 };
 
-// load inventory from localStorage
-// if none stored return default inventory
+// load game state from localStorage
+// if none stored return default game state
 function loadGameState(): GameState {
   const saved = localStorage.getItem("farmGameState");
   if (saved) {
@@ -57,8 +57,8 @@ function loadGameState(): GameState {
   return defaultGameState;
 }
 
-// owns farm inventory + current view,
-// and passes state + updateItem down into the three views
+// owns farm game state + current view,
+// and passes GameState + updateItem down into the three views
 export default function App() {
   const [currentView, setCurrentView] = useState<"inventory" | "orders" | "plan">("inventory");
   const [gameState, setGameState] = useState<GameState>(loadGameState);
@@ -74,16 +74,16 @@ export default function App() {
 
       let newStorage;
       if (existingIndex >= 0) {
-        // Item exists, update count
+        // item exists, update count
         const newCount = Math.max(0, storage[existingIndex].count + delta);
         newStorage = storage.map((item, i) =>
           i === existingIndex ? { ...item, count: newCount } : item
         );
       } else if (delta > 0) {
-        // Item doesn't exist and we're adding, create new entry
+        // item doesn't exist and we're adding, create new entry
         newStorage = [...storage, { name: itemId, count: delta }];
       } else {
-        // Item doesn't exist and we're subtracting, do nothing
+        // item doesn't exist and we're subtracting, do nothing
         newStorage = storage;
       }
 
