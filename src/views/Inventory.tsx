@@ -1,13 +1,13 @@
 import { useState } from "react";
-import type { InventoryCounts, Section } from "../typedefs/GameTypes";
+import type { GameState, Section } from "../typedefs/GameTypes";
 import InventoryGrid from "../components/InventoryGrid";
 
 type InventoryProps = {
-  inventory: InventoryCounts;
+  gameState: GameState;
   updateItem: (section: Section, itemId: string, delta: number) => void;
 };
 
-export default function Inventory({ inventory, updateItem }: InventoryProps) {
+export default function Inventory({ gameState, updateItem }: InventoryProps) {
   const [activeSection, setActiveSection] = useState<Section>("silo");
   const [isEditing, setIsEditing] = useState(false);
 
@@ -63,7 +63,7 @@ export default function Inventory({ inventory, updateItem }: InventoryProps) {
         <InventoryGrid
           section={activeSection}
           isEditing={isEditing}
-          inventory={inventory}
+          gameState={gameState}
           updateItem={updateItem}
         />
       </div>

@@ -1,10 +1,10 @@
-import type { InventoryCounts } from "../typedefs/GameTypes";
+import type { GameState } from "../typedefs/GameTypes";
 
 type PlanProps = {
-  inventory: InventoryCounts;
+  gameState: GameState;
 };
 
-export default function Plan({ inventory }: PlanProps) {
+export default function Plan({ gameState }: PlanProps) {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 border-b text-lg font-semibold">Plan</div>

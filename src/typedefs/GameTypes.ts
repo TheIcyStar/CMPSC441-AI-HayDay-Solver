@@ -1,22 +1,14 @@
 import type { AnimalProduct, Crop, FruitOrBerry, Product, ProductionBuilding } from "./GameData"
 
 //
-// Farm state types (for App.tsx)
+// types for the static info of each inventory item
 export type Section = "silo" | "barn";
-
-export type InventoryCounts = {
-  silo: Record<string, number>;
-  barn: Record<string, number>;
-};
 
 export type InventoryItemConfig = {
   id: string;
   section: Section;
   label: string;
 };
-
-export type OrderSlot = { id: number; /* TODO */ };
-export type ProductionStep = { id: number; /* TODO */ };
 
 //
 // Basic primatives

@@ -1,4 +1,4 @@
-import type { InventoryCounts, Section, InventoryItemConfig } from "../typedefs/GameTypes";
+import type { GameState, Section, InventoryItemConfig } from "../typedefs/GameTypes";
 import InventoryItemCard from "./InventoryItemCard";
 
 // id = inventory key, section = where item is stored, label = text under the icon
@@ -72,17 +72,22 @@ const INVENTORY_ITEMS: InventoryItemConfig[] = [
 type InventoryGridProps = {
   section: Section;
   isEditing: boolean;
-  inventory: InventoryCounts;
+  gameState: GameState;
   updateItem: (section: Section, itemId: string, delta: number) => void;
 };
 
-export default function InventoryGrid({ section, isEditing, inventory, updateItem }: InventoryGridProps) {
+export default function InventoryGrid({ section, isEditing, gameState, updateItem }: InventoryGridProps) {
   const filteredItems = INVENTORY_ITEMS.filter((item) => item.section === section);
+
+  function getCount(itemId: string): number {
+    const stack = gameState[section].storage.find((s) => s.name === itemId);
+    return stack?.count ?? 0;
+  }
 
   return (
     <div className="grid grid-cols-7 gap-6">
       {filteredItems.map((item) => {
-        const count = inventory[section][item.id] ?? 0;
+        const count = getCount(item.id);
         return (
           <InventoryItemCard
             key={item.id}
