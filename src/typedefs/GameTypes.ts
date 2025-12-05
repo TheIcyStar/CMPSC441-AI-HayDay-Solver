@@ -1,6 +1,16 @@
 import type { AnimalProduct, Crop, FruitOrBerry, Product, ProductionBuilding } from "./GameData"
 
 //
+// types for the static info of each inventory item
+export type Section = "silo" | "barn";
+
+export type InventoryItemConfig = {
+  id: string;
+  section: Section;
+  label: string;
+};
+
+//
 // Basic primatives
 export type ItemStack = {
   name: string,
