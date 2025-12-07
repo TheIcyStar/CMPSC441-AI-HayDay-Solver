@@ -23,6 +23,8 @@ export type OrderSlot = {
   isGenerated: boolean;
 };
 
+{/* Other Order related props */}
+
 export type ProductionStep = { id: number; /* TODO */ };
 
 //
