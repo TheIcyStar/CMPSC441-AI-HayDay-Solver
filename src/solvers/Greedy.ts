@@ -10,15 +10,15 @@ import type { GameState } from "../typedefs/GameTypes"
   4. Items in truck orders
 */
 
-export function solve(startState: GameState): SolutionStep[] {
+export function solve(_startState: GameState): SolutionStep[] {
   let solutionSteps: SolutionStep[] = []
 
-  for(let i=0; i<3; i++){
+  for (let i = 0; i < 3; i++) {
     let newStep: SolutionStep = {
       newQueueItems: [
-        {itemName: "Wheat", count: i*2},
-        {itemName: "Corn", count: i*2},
-        {itemName: "ChickenFeed", count: i},
+        { itemName: "Wheat", count: i * 2 },
+        { itemName: "Corn", count: i * 2 },
+        { itemName: "ChickenFeed", count: i },
       ],
 
       newProducedItems: [],
