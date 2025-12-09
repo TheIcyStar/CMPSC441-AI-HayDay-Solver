@@ -18,7 +18,7 @@ export type ItemStack = {
 }
 
 export type Order = {
-  items: ItemStack,
+  items: ItemStack[],
   goldPayout: number
   //No XP handling at this time
 }
@@ -57,6 +57,8 @@ export type GameState = {
     capacity: number
   },
 
+  orders: (Order | null)[],
+  
   cropFields: {
     fields: QueuedItem[],
     maxCount: number

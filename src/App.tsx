@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { GameState, Section } from "./typedefs/GameTypes";
+import type { GameState, Section, Order } from "./typedefs/GameTypes";
 import MainLayout from "./layouts/MainLayout";
 import Inventory from "./views/Inventory";
 import Orders from "./views/Orders";
@@ -22,6 +22,7 @@ const defaultGameState: GameState = {
     ],
     capacity: 500,
   },
+  orders: Array(9).fill(null),
   cropFields: {
     fields: [],
     maxCount: 10,
@@ -43,8 +44,6 @@ const defaultGameState: GameState = {
   productionBuildings: [],
 };
 
-// load game state from localStorage
-// if none stored return default game state
 function loadGameState(): GameState {
   const saved = localStorage.getItem("farmGameState");
   if (saved) {
@@ -97,11 +96,19 @@ export default function App() {
     });
   }
 
+  function updateOrder(slotIndex: number, order: Order | null) {
+    setGameState((prev) => {
+      const newOrders = [...prev.orders];
+      newOrders[slotIndex] = order;
+      return { ...prev, orders: newOrders };
+    });
+  }
+
   let content;
   if (currentView === "inventory") {
     content = <Inventory gameState={gameState} updateItem={updateItem} />;
   } else if (currentView === "orders") {
-    content = <Orders gameState={gameState} />;
+    content = <Orders gameState={gameState} updateOrder={updateOrder} />;
   } else {
     content = <Plan gameState={gameState} />;
   }
