@@ -4,7 +4,7 @@ type OrdersProps = {
   gameState: GameState;
 };
 
-export default function Orders({ gameState }: OrdersProps) {
+export default function Orders({ }: OrdersProps) {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 border-b text-lg font-semibold">Orders</div>

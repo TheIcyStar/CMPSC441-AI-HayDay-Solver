@@ -6,10 +6,10 @@ import type { SolutionStep } from "../typedefs/SolverTypes"
  * Returns a game state with layered actions
  */
 export function getLayeredGameState(initial: GameState, layers: SolutionStep[]): GameState {
-  let stateData: GameState = JSON.parse(JSON.stringify(initial))
+  let _stateData: GameState = JSON.parse(JSON.stringify(initial))
 
-  for(const step of layers){
-    for(const subtractingItem of step.newQueueItems){
+  for (const step of layers) {
+    for (const _subtractingItem of step.newQueueItems) {
 
     }
   }
