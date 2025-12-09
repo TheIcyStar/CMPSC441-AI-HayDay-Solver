@@ -175,7 +175,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                       className="flex flex-col items-center p-2 rounded-lg border border-gray-200 hover:border-amber-300 hover:bg-amber-50/50 transition-colors h-28"
                     >
                       <img
-                        src={`/assets/items/${item.name}.png`}
+                        src={`./assets/items/${item.name}.png`}
                         alt={getItemLabel(item.name)}
                         className="w-10 h-10 object-contain"
                       />
@@ -263,7 +263,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                     }`}
                   >
                     <img
-                      src={`/assets/items/${id}.png`}
+                      src={`./assets/items/${id}.png`}
                       alt={getItemLabel(id)}
                       className="w-10 h-10 object-contain"
                     />

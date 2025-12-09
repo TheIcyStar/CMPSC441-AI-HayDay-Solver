@@ -61,7 +61,7 @@ export default function OrderSlotCard({ slotIndex, order, isSelected, onClick, g
                 return (
                 <div key={idx} className="flex items-center w-full text-xs">
                     <img
-                    src={`/assets/items/${item.name}.png`}
+                    src={`./assets/items/${item.name}.png`}
                     alt={getItemLabel(item.name)}
                     className="w-5 h-5 object-contain flex-shrink-0"
                     />
