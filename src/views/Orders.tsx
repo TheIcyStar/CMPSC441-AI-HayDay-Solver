@@ -79,7 +79,7 @@ export default function Orders({ inventory }: OrdersProps) {
 
       {/*9x9 Grid Layout*/}
       <div className = "flex-1 p-4 overflow-y-auto">
-        <div className ="grid grid-cols-3 grid-rows-3 gap-5 mb-4">
+        <div className ="grid grid-cols-3 grid-rows-3 gap-4 mb-4">
           {slots.map((slot) => (
             <OrderSlotCard
               key = {slot.id}
