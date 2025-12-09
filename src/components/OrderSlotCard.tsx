@@ -73,7 +73,7 @@ export default function OrderSlotCard({ slotIndex, order, isSelected, onClick, g
             </div>
         </div>
         <div className="mt-2 pt-1 border-t border-gray-800 flex items-center justify-end gap-1">
-            <img src="/assets/miscellaneous/gold.png" alt="Gold" className="w-4 h-4" />
+            <img src="./assets/miscellaneous/gold.png" alt="Gold" className="w-4 h-4" />
             <span className="text-sm font-semibold text-gray-700">{order.goldPayout}</span>
         </div>
         </>

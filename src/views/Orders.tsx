@@ -129,7 +129,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
       <div className="flex items-center justify-between p-4 border-b  min-h-[77px]">
         <div className="flex items-center text-sm text-gray-800">
           <span className="font-hayday text-2xl">Truck Orders</span>
-          <img src="/assets/miscellaneous/truck.png" alt="Truck" className="w-12 h-12 ml-3" />
+          <img src="./assets/miscellaneous/truck.png" alt="Truck" className="w-12 h-12 ml-3" />
         </div>
       </div>
 
@@ -206,7 +206,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                 className="flex-1 py-3 rounded-xl bg-yellow-100 hover:bg-yellow-200 flex flex-col items-center justify-center transition-colors"
                 title="Random Order"
               >
-                <img src="/assets/miscellaneous/randomize.png" alt="Randomize" className="w-8 h-8" />
+                <img src="./assets/miscellaneous/randomize.png" alt="Randomize" className="w-8 h-8" />
                 <span className="text-sm font-medium text-yellow-700">Randomize</span>
                 <span className="text-sm font-medium text-yellow-700">Order</span>
               </button>
@@ -215,7 +215,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                 className="flex-1 py-3 rounded-xl bg-red-100 hover:bg-red-200 flex flex-col items-center justify-center transition-colors"
                 title="Delete Order"
               >
-                <img src="/assets/miscellaneous/trashcan.png" alt="Trashcan" className="w-8 h-8" />
+                <img src="./assets/miscellaneous/trashcan.png" alt="Trashcan" className="w-8 h-8" />
                 <span className="text-sm font-medium text-red-700">Delete</span>
                 <span className="text-sm font-medium text-red-700">Order</span>
               </button>
@@ -224,7 +224,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                 className="flex-1 py-3 rounded-xl bg-green-100 hover:bg-green-200 flex flex-col items-center justify-center transition-colors"
                 title="Confirm Order"
               >
-                <img src="/assets/miscellaneous/truck.png" alt="Truck" className="w-10 h-10" />
+                <img src="./assets/miscellaneous/truck.png" alt="Truck" className="w-10 h-10" />
                 <span className="text-sm font-medium text-green-700">Confirm</span>
                 <span className="text-sm font-medium text-green-700">Order</span>
               </button>
