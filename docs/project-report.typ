@@ -48,9 +48,12 @@ Hay Day is a popular mobile farming game by Supercell that involves resource man
 - Build Tool: Vite
 - Styling: Tailwind CSS
 - State Management: React hooks (useState, useEffect)
-- Routing: React Router DOM
 - Type Safety: TypeScript with custom type definitions
 
 == Results & Demonstration
+#show link: underline
+#link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")["Hay Day Demo Link"]
+
 == Conclusion 
-== References and Source Code
+=== Challenges and future Improvements
+== References
