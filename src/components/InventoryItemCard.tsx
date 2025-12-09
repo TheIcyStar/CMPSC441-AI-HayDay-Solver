@@ -15,7 +15,7 @@ export default function InventoryItemCard({
   onIncrement,
   onDecrement,
 }: InventoryItemCardProps) {
-  const src = `/assets/items/${iconName}.png`;
+  const src = `./assets/items/${iconName}.png`;
 
   return (
     <div className="flex flex-col items-center text-center text-sm">
