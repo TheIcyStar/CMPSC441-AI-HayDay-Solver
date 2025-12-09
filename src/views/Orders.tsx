@@ -127,11 +127,9 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b  min-h-[77px]">
-        <div className="text-sm text-gray-800">
-          <span className="font-hayday text-xl">Order Key</span>
-          <span className="font-hayday text-xl text-red-500 ml-5">■ Missing</span>
-          <span className="font-hayday text-xl text-yellow-500 ml-3">■ Partial</span>
-          <span className="font-hayday text-xl text-green-500 ml-3">■ Sufficient</span>
+        <div className="flex items-center text-sm text-gray-800">
+          <span className="font-hayday text-2xl">Truck Orders</span>
+          <img src="/assets/miscellaneous/truck.png" alt="Truck" className="w-12 h-12 ml-3" />
         </div>
       </div>
 
@@ -160,7 +158,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
           </div>
         ) : (
           <>
-            <h2 className="font-hayday text-lg font-semibold text-gray-800 mb-4">
+            <h2 className="font-hayday text-lg font-semibold text-gray-800 mb-4 text-center">
               Modify Slot {selectedSlot + 1}
             </h2>
 

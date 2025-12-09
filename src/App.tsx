@@ -44,32 +44,11 @@ const defaultGameState: GameState = {
   productionBuildings: [],
 };
 
-// load game state from localStorage
-// if none stored return default game state
-// function loadGameState(): GameState {
-//   const saved = localStorage.getItem("farmGameState");
-//   if (saved) {
-//     try {
-//       return JSON.parse(saved);
-//     } catch {
-//       return defaultGameState;
-//     }
-//   }
-//   return defaultGameState;
-// }
-
 function loadGameState(): GameState {
   const saved = localStorage.getItem("farmGameState");
   if (saved) {
     try {
-      const parsed = JSON.parse(saved);
-      // ensure orders array exists and has 9 slots (for backward compatibility)
-      if (!parsed.orders || !Array.isArray(parsed.orders)) {
-        parsed.orders = Array(9).fill(null);
-      } else if (parsed.orders.length < 9) {
-        parsed.orders = [...parsed.orders, ...Array(9 - parsed.orders.length).fill(null)];
-      }
-      return parsed;
+      return JSON.parse(saved);
     } catch {
       return defaultGameState;
     }
