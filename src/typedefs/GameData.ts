@@ -83,6 +83,12 @@ export type Product =
   "RoastedTomatoes" |
   "CherryJuice"
 
+export type AnimalFeed =
+  "ChickenFeed" |
+  "CowFeed" |
+  "PigFeed" |
+  "SheepFeed"
+
 export type ProductionBuilding =
   "CropField" |
   "Bakery" |
@@ -97,6 +103,25 @@ export type ProductionBuilding =
   "CakeOven" |
   "JuicePress" |
   "IceCreamMaker"
+
+//
+// Type narrowing functions
+
+export function isProduct(itemName: string): itemName is Product {
+  return Object.keys(RecipeInfo).includes(itemName)
+}
+
+export function isCrop(itemName: string): itemName is Crop {
+  return Object.keys(CropInfo).includes(itemName)
+}
+
+export function isFruitOrBerry(itemName: string): itemName is FruitOrBerry {
+  return Object.keys(BerryOrFruitInfo).includes(itemName)
+}
+
+export function isAnimalProduct(itemName: string): itemName is AnimalProduct {
+  return Object.keys(AnimalInfo).includes(itemName)
+}
 
 //
 // Item details
@@ -128,6 +153,13 @@ export const AnimalInfo: Record<AnimalProduct, number> = {
   Milk: 60,
   Bacon: 4*60,
   Wool: 6*60
+}
+
+export const AnimalFeedInfo: Record<AnimalProduct, AnimalFeed> = {
+  Egg: "ChickenFeed",
+  Milk: "CowFeed",
+  Bacon: "PigFeed",
+  Wool: "SheepFeed"
 }
 
 // Inventory item configuration
