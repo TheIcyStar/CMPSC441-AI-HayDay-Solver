@@ -30,4 +30,4 @@ dist-ssr
 **/.DS_Store
 
 # it's fine, this is an assignment
-package-lock.json
+# package-lock.json
