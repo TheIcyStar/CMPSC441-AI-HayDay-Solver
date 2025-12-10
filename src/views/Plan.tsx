@@ -55,20 +55,13 @@ export default function Plan({ gameState }: PlanProps) {
         {JSON.stringify(solution)}
       </div>
 
-      {/* <div>
-        <PlanItemCard
-          key={"Wheat"}
-          iconName={"Wheat"}
-          label={"Wheat"}
-          count={1}
-        >
-        </PlanItemCard>
-      </div> */}
-
       <div className="gap-10">
         {
           solution.map((step) => (
-            <div className="flex" style={{ display: "flex", alignItems: "center" }}>
+            <div className={`flex items-center text-center
+              relative w-full h-54 rounded-xl border-2 p-3 transition-all
+              border-gray-200 bg-amber-50`}
+            >
               {step["newQueueItems"].map((item) => (
                 // item.count > 0 
                 // ?
@@ -83,7 +76,7 @@ export default function Plan({ gameState }: PlanProps) {
               
               <div>
                 <img src="./assets/miscellaneous/arrow_right.png" alt="arrow_right" className="w-50 h-20" />
-                <div style={{ display: "flex", justifyContent: "center"}}>Time: {step.nextActionDelayMinutes} min</div>
+                <div className="text-base font-hayday text-gray-600 mb-2">Time: {step.nextActionDelayMinutes} min</div>
               </div>
 
               {step["newProducedItems"][0] 
@@ -99,13 +92,10 @@ export default function Plan({ gameState }: PlanProps) {
                   ))
                 :
                   // Else, simply write "no product"
-                  <div>No product</div>
+                  <div className="text-base font-hayday text-gray-600 mb-2">No product</div>
               }
 
               <br/>
-              
-
-
               
             </div>
           ))
