@@ -65,10 +65,10 @@ export default function Plan({ gameState }: PlanProps) {
         </PlanItemCard>
       </div> */}
 
-      <div className="flex gap-10">
+      <div className="gap-10">
         {
           solution.map((step) => (
-            <div className="flex">
+            <div className="flex" style={{ display: "flex", alignItems: "center" }}>
               {step["newQueueItems"].map((item) => (
                 // item.count > 0 
                 // ?
@@ -80,8 +80,32 @@ export default function Plan({ gameState }: PlanProps) {
                 </PlanItemCard>
                 // : <div>None</div>
               ))}
+              
+              <div>
+                <img src="./assets/miscellaneous/arrow_right.png" alt="arrow_right" className="w-50 h-20" />
+                <div style={{ display: "flex", justifyContent: "center"}}>Time: {step.nextActionDelayMinutes} min</div>
+              </div>
+
+              {step["newProducedItems"][0] 
+                ?
+                  // If there are products from the step, show them
+                  step["newProducedItems"].map((item) => (
+                    <PlanItemCard
+                      iconName={item.itemName}
+                      label={item.itemName}
+                      count={item.count}
+                    >
+                    </PlanItemCard>
+                  ))
+                :
+                  // Else, simply write "no product"
+                  <div>No product</div>
+              }
 
               <br/>
+              
+
+
               
             </div>
           ))
