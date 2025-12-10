@@ -40,7 +40,7 @@ export type ProductionBuildingData = {
   }[]
 }
 
-export type bushOrTreeData = {
+export type BushOrTreeData = {
   product: FruitOrBerry,
   numHarvests: 0 | 1 | 2 | 3 | 4, // wilts at 4
   startTime: number, // when a growth stage begins
@@ -65,7 +65,7 @@ export type GameState = {
   },
 
   bushesAndTrees: {
-    planted: bushOrTreeData[],
+    planted: BushOrTreeData[],
     maxCount: number
   },
 

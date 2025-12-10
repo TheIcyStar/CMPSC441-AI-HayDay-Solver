@@ -90,7 +90,6 @@ export type AnimalFeed =
   "SheepFeed"
 
 export type ProductionBuilding =
-  "CropField" |
   "Bakery" |
   "FeedMill" |
   "Dairy" |
@@ -116,7 +115,7 @@ export function isCrop(itemName: string): itemName is Crop {
 }
 
 export function isFruitOrBerry(itemName: string): itemName is FruitOrBerry {
-  return Object.keys(BerryOrFruitInfo).includes(itemName)
+  return Object.keys(FruitOrBerryInfo).includes(itemName)
 }
 
 export function isAnimalProduct(itemName: string): itemName is AnimalProduct {
@@ -140,7 +139,7 @@ export const CropInfo: Record<Crop, number>  = {
   Tomato: 6*60,
 }
 
-export const BerryOrFruitInfo: Record<FruitOrBerry, number> = {
+export const FruitOrBerryInfo: Record<FruitOrBerry, number> = {
   Apple: 16*60,
   Raspberry: 18*60,
   Cherry: 28*60, //1d 4h
@@ -230,6 +229,22 @@ export const INVENTORY_ITEMS: InventoryItemConfig[] = [
   { id: "RoastedTomatoes", section: "barn", label: "Roasted Tomatoes" },
   { id: "CherryJuice", section: "barn", label: "Cherry Juice" },
 ];
+
+// building labels for farm view
+export const BUILDING_LABELS: Record<ProductionBuilding, string> = {
+  Bakery: "Bakery",
+  FeedMill: "Feed Mill",
+  Dairy: "Dairy",
+  SugarMill: "Sugar Mill",
+  PopcornPot: "Popcorn Pot",
+  BBQGrill: "BBQ Grill",
+  PieOven: "Pie Oven",
+  Loom: "Loom",
+  SewingMachine: "Sewing Machine",
+  CakeOven: "Cake Oven",
+  JuicePress: "Juice Press",
+  IceCreamMaker: "Ice Cream Maker",
+};
 
 export const RecipeInfo: Record<Product, ProductRecipe> = {
   Bread: {

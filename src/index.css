@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "HaydayFont";
-  src: url("./assets/fonts/sc_secorigbb.ttf") format("truetype");
+  src: url("/CMPSC441-AI-HayDay-Solver/assets/fonts/sc_secorigbb.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { GameState, Section, Order } from "./typedefs/GameTypes";
 import MainLayout from "./layouts/MainLayout";
+import Farm from "./views/Farm";
 import Inventory from "./views/Inventory";
 import Orders from "./views/Orders";
 import Plan from "./views/Plan";
@@ -40,15 +41,76 @@ const defaultGameState: GameState = {
   },
   animals: {
     chickens: [],
-    numChickens: 0,
+    numChickens: 18,
     cows: [],
-    numCows: 0,
+    numCows: 15,
     pigs: [],
-    numPigs: 0,
+    numPigs: 15,
     sheep: [],
-    numSheep: 0,
+    numSheep: 15,
   },
-  productionBuildings: [],
+  productionBuildings: [
+    {
+      name: "Bakery",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "FeedMill",
+      count: 2,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "Dairy",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "SugarMill",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "PopcornPot",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "BBQGrill",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "PieOven",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "Loom",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "SewingMachine",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "CakeOven",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "JuicePress",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+    {
+      name: "IceCreamMaker",
+      count: 1,
+      productionQueues: [{ queue: [], maxQueueSize: 1 }],
+    },
+  ],
 };
 
 function loadGameState(): GameState {
@@ -66,7 +128,7 @@ function loadGameState(): GameState {
 // owns farm game state + current view,
 // and passes GameState + updateItem down into the three views
 export default function App() {
-  const [currentView, setCurrentView] = useState<"inventory" | "orders" | "plan">("inventory");
+  const [currentView, setCurrentView] = useState<"farm" | "inventory" | "orders" | "plan">("inventory");
   const [gameState, setGameState] = useState<GameState>(loadGameState);
 
   useEffect(() => {
@@ -112,7 +174,9 @@ export default function App() {
   }
 
   let content;
-  if (currentView === "inventory") {
+  if (currentView === "farm") {
+    content = <Farm gameState={gameState} setGameState={setGameState} />;
+  } else if (currentView === "inventory") {
     content = <Inventory gameState={gameState} updateItem={updateItem} />;
   } else if (currentView === "orders") {
     content = <Orders gameState={gameState} updateOrder={updateOrder} />;

@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 
 type MainLayoutProps = {
-  currentView: "inventory" | "orders" | "plan";
-  onChangeView: (view: "inventory" | "orders" | "plan") => void;
+  currentView: "farm" | "inventory" | "orders" | "plan";
+  onChangeView: (view: "farm" | "inventory" | "orders" | "plan") => void;
   children: ReactNode;
 };
 
 export default function MainLayout({ currentView, onChangeView, children }: MainLayoutProps) {
-  const navItems: { key: "inventory" | "orders" | "plan"; label: string }[] = [
+  const navItems: { key: "farm" | "inventory" | "orders" | "plan"; label: string }[] = [
+    { key: "farm", label: "Farm"},
     { key: "inventory", label: "Inventory" },
     { key: "orders", label: "Orders" },
     { key: "plan", label: "Plan" },
@@ -23,7 +24,7 @@ export default function MainLayout({ currentView, onChangeView, children }: Main
       {/* Sidebar */}
       <div className="flex flex-col items-center p-4 gap-4 w-48">
         {/* Logo */}
-        <img src="./assets/logo/hayday_logo.png" alt="Logo" className="w-28 h-28" />
+        <img src="./assets/logo/hayday_logo.png" alt="Logo" className="w-28 h-28 rounded-lg" /> 
 
         {/* Nav buttons */}
         <nav className="font-hayday text-xl flex flex-col gap-2 w-full">
