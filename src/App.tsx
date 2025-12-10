@@ -8,17 +8,24 @@ import Plan from "./views/Plan";
 const defaultGameState: GameState = {
   silo: {
     storage: [
-      { name: "Wheat", count: 1 },
-      { name: "Corn", count: 1 },
-      { name: "Soybean", count: 1},
+      { name: "Wheat", count: 10 },
+      { name: "Corn", count: 10 },
+      { name: "Soybean", count: 10 },
+      { name: "Sugarcane", count: 10 },
+      { name: "Carrot", count: 10 },
+      { name: "Indigo", count: 10 },
+      { name: "Pumpkin", count: 10 },
+      { name: "Cotton", count: 10 },
+      { name: "ChilliPepper", count: 10 },
+      { name: "Tomato", count: 10 },
     ],
     capacity: 500,
   },
   barn: {
     storage: [
       { name: "Egg", count: 1 },
-      { name: "Milk", count: 1 },
-      { name: "Bacon", count: 1},
+      { name: "Milk", count: 2 },
+      { name: "Bacon", count: 1 },
     ],
     capacity: 500,
   },
