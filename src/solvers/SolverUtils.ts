@@ -11,7 +11,7 @@ export type ItemStackNode = {
  * Returns a forest of recipe trees for the order, with crops/fruit/etc at the leaves
  */
 export function buildPrerequisiteTree(order: Order): ItemStackNode[]{
-  let forest: ItemStackNode[] = []
+  const forest: ItemStackNode[] = []
 
   //Build recipe trees with dfs
   for(const item of order.items){
@@ -20,7 +20,7 @@ export function buildPrerequisiteTree(order: Order): ItemStackNode[]{
       prereqs: [],
       parent: null
     }
-    let queue: ItemStackNode[] = [root]
+    const queue: ItemStackNode[] = [root]
 
 
     while(queue.length > 0){
@@ -100,12 +100,12 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
 
   if(isProduct(itemStack.name)){
     for(const prereq of RecipeInfo[itemStack.name].ingredients){
-      let maybeSiloItem = gameState.silo.storage.find((item) => item.name == prereq.item)
+      const maybeSiloItem = gameState.silo.storage.find((item) => item.name == prereq.item)
       if(maybeSiloItem && maybeSiloItem.count > prereq.count){
         continue
       }
 
-      let maybeBarnItem = gameState.barn.storage.find((item) => item.name == prereq.item)
+      const maybeBarnItem = gameState.barn.storage.find((item) => item.name == prereq.item)
       if(maybeBarnItem && maybeBarnItem.count > prereq.count){
         continue
       }
@@ -126,7 +126,7 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
  * @returns A list of collected items
  */
 export function collectAllReadyItems(gameState: GameState, gameTime: number): ItemStack[] {
-  let collected: ItemStack[] = []
+  const collected: ItemStack[] = []
 
   //Collect products
   for(const productionBuilding of gameState.productionBuildings){
@@ -138,7 +138,7 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
 
         modifyStoredItemCount(gameState, "barn", item.name, 1)
 
-        let collectionItem = collected.find((x) => x.name == item.name)
+        const collectionItem = collected.find((x) => x.name == item.name)
         if(collectionItem){
           collectionItem.count += 1
         } else {
@@ -189,7 +189,7 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
 }
 
 function modifyStoredItemCount(gameState: GameState, type: "barn" | "silo", itemName: string, amount: number){
-  let container = type == "barn" ? gameState.barn.storage : gameState.silo.storage
+  const container = type == "barn" ? gameState.barn.storage : gameState.silo.storage
   let storageItem = container.find((x) => x.name == itemName)
 
   if(storageItem){
