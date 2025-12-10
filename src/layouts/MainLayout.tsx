@@ -24,7 +24,7 @@ export default function MainLayout({ currentView, onChangeView, children }: Main
       {/* Sidebar */}
       <div className="flex flex-col items-center p-4 gap-4 w-48">
         {/* Logo */}
-        <img src="./assets/logo/hayday_logo.png" alt="Logo" className="w-28 h-28" />
+        <img src="./assets/logo/hayday_logo.png" alt="Logo" className="w-28 h-28 rounded-lg" /> 
 
         {/* Nav buttons */}
         <nav className="font-hayday text-xl flex flex-col gap-2 w-full">

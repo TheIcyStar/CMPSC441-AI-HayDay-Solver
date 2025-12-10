@@ -97,7 +97,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
       <div className="flex-1 overflow-y-auto p-4 space-y-6">
         {/* Silo */}
         <section className="bg-amber-100 rounded-xl p-4">
-          <h2 className="font-hayday text-lg text-gray-800 mb-2">Silo</h2>
+          <h2 className="font-hayday text-xl text-gray-800 mb-2">Silo</h2>
           <p className="text-sm text-black mb-3">Silo storage is shown in the Inventory tab</p>
           <div className="flex items-center gap-3">
             <span className="text-black w-20">Capacity:</span>
@@ -119,7 +119,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
 
         {/* Barn */}
         <section className="bg-amber-100 rounded-xl p-4">
-          <h2 className="font-hayday text-lg text-gray-800 mb-2">Barn</h2>
+          <h2 className="font-hayday text-xl text-gray-800 mb-2">Barn</h2>
           <p className="text-sm text-black mb-3">Barn storage is shown in the Inventory tab</p>
           <div className="flex items-center gap-3">
             <span className="text-black w-20">Capacity:</span>
@@ -141,7 +141,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
 
         {/* Orders */}
         <section className="bg-amber-100 rounded-xl p-4">
-          <h2 className="font-hayday text-lg text-gray-800 mb-2">Orders</h2>
+          <h2 className="font-hayday text-xl text-gray-800 mb-2">Orders</h2>
           <p className="text-sm text-black">Orders are managed in the Orders tab</p>
         </section>
 
@@ -153,7 +153,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
               alt="Crop Field"
               className="w-18 h-18 object-contain"
             />
-            <h2 className="font-hayday text-lg text-gray-800">Crop Fields</h2>
+            <h2 className="font-hayday text-xl text-gray-800">Crop Fields</h2>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-black w-24">Max Count:</span>
@@ -181,7 +181,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
               alt="Tree"
               className="w-18 h-18 object-contain"
             />
-            <h2 className="font-hayday text-lg text-gray-800">Bushes & Trees</h2>
+            <h2 className="font-hayday text-xl text-gray-800">Bushes & Trees</h2>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-black w-24">Max Count:</span>
@@ -205,7 +205,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
 
         {/* Animals */}
         <section className="bg-amber-100 rounded-xl p-4">
-          <h2 className="font-hayday text-lg text-gray-800 mb-4">Animals</h2>
+          <h2 className="font-hayday text-xl text-gray-800 mb-4">Animals</h2>
           <div className="grid grid-cols-4 gap-4">
             {ANIMAL_INFO.map(({ key, label, plural }) => {
               const count = gameState.animals[key];
@@ -243,7 +243,7 @@ export default function Farm({ gameState, setGameState }: FarmProps) {
 
         {/* Production Buildings */}
         <section className="bg-amber-100 rounded-xl p-4">
-          <h2 className="font-hayday text-lg text-gray-800 mb-4">Production Buildings</h2>
+          <h2 className="font-hayday text-xl text-gray-800 mb-4">Production Buildings</h2>
           <div className="grid grid-cols-6 gap-3">
             {gameState.productionBuildings.map((building) => (
               <div
