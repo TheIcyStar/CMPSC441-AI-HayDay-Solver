@@ -17,7 +17,7 @@ const solvers: {type: SolverType, solver: any}[] = [
 
 
 export default function Plan({ gameState }: PlanProps) {
-  const [solverType, setSolverType] = useState<SolverType>("Greedy")
+  const [solverType, setSolverType] = useState<SolverType>("None")
   const [solution, setSolution] = useState<SolutionStep[]>([])
 
 
@@ -33,7 +33,6 @@ export default function Plan({ gameState }: PlanProps) {
               onClick={() => {
                 setSolverType(solver.type)
                 setSolution(solver.solver(gameState))
-                console.log(`The solution is`, solution)
               }}
               className={`
                 font-hayday text-lg py-2 px-4 mx-2 rounded-lg font-semibold transition-colors
@@ -51,62 +50,72 @@ export default function Plan({ gameState }: PlanProps) {
       </div>
 
 
-      <div className="flex-1 p-4 overflow-y-auto text-gray-500">
+      {/* <div className="flex-1 p-4 overflow-y-auto text-gray-500">
         {JSON.stringify(solution)}
-      </div>
+      </div> */}
 
-      <div className="gap-10">
-        {
-          solution.map((step) => (
-            <div className={`flex items-center text-center
-              relative w-full h-54 rounded-xl border-2 p-3 transition-all
-              border-gray-200 bg-amber-50`}
-            >
-              {step["newQueueItems"].map((item) => (
-                // item.count > 0 
-                // ?
-                <PlanItemCard
-                  iconName={item.itemName}
-                  label={item.itemName}
-                  count={item.count}
+      {
+        solverType === "None" 
+        ?
+          <div className="text-base font-hayday text-gray-600 mb-2 text-xl">
+            Choose a solver type above to start!
+          </div>
+        :
+          <div className="gap-10">
+            {
+              solution.map((step) => (
+                <div className={`flex items-center text-center
+                  relative w-full h-54 rounded-xl border-2 p-3 transition-all
+                  border-gray-200 bg-amber-50`}
                 >
-                </PlanItemCard>
-                // : <div>None</div>
-              ))}
-              
-              <div>
-                <img src="./assets/miscellaneous/arrow_right.png" alt="arrow_right" className="w-50 h-20" />
-                <div className="text-base font-hayday text-gray-600 mb-2">Time: {step.nextActionDelayMinutes} min</div>
-              </div>
-
-              {step["newProducedItems"][0] 
-                ?
-                  // If there are products from the step, show them
-                  step["newProducedItems"].map((item) => (
+                  {step["newQueueItems"].map((item) => (
+                    // item.count > 0 
+                    // ?
                     <PlanItemCard
                       iconName={item.itemName}
                       label={item.itemName}
                       count={item.count}
                     >
                     </PlanItemCard>
-                  ))
-                :
-                  // Else, simply write "no product"
-                  <div className="text-base font-hayday text-gray-600 mb-2">No product</div>
-              }
+                    // : <div>None</div>
+                  ))}
+                  
+                  <div>
+                    <img src="./assets/miscellaneous/arrow_right.png" alt="arrow_right" className="w-50 h-20" />
+                    <div className="text-base font-hayday text-gray-600 mb-2">Time: {step.nextActionDelayMinutes} min</div>
+                  </div>
 
-              <br/>
-              
-            </div>
-          ))
-        }
-      </div>
+                  {step["newProducedItems"][0] 
+                    ?
+                      // If there are products from the step, show them
+                      step["newProducedItems"].map((item) => (
+                        <PlanItemCard
+                          iconName={item.itemName}
+                          label={item.itemName}
+                          count={item.count}
+                        >
+                        </PlanItemCard>
+                      ))
+                    :
+                      // Else, simply write "no product"
+                      <div className="text-base font-hayday text-gray-600 mb-2">No product</div>
+                  }
 
-      <button
-        onClick={() => {
-          console.log("hello there")
-        }}
-      >Push me loser</button>
+                  <br/>
+                  
+                </div>
+              ))
+            }
+          </div>
+      }
+
+      {/* <div className="flex justify-center flex-end">
+        <button className="bg-amber-300"
+          onClick={() => {
+            console.log(`Solution: `, {solution})
+          }}
+        >Press me to print solution to console</button>
+      </div> */}
 
     </div>
   );
