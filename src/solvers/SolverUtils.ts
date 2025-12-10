@@ -118,3 +118,91 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
 
   return 0
 }
+
+/**
+ * Modify gameState to:
+ * - Collect items with a finishTime < gameTime,
+ * - Add those items to storage
+ * @returns A list of collected items
+ */
+export function collectAllReadyItems(gameState: GameState, gameTime: number): ItemStack[] {
+  let collected: ItemStack[] = []
+
+  //Collect products
+  for(const productionBuilding of gameState.productionBuildings){
+    for(const queue of productionBuilding.productionQueues){
+      for(const item of queue.queue){
+        if(item.completeTime > gameTime){
+          continue
+        }
+
+        modifyStoredItemCount(gameState, "barn", item.name, 1)
+
+        let collectionItem = collected.find((x) => x.name == item.name)
+        if(collectionItem){
+          collectionItem.count += 1
+        } else {
+          collected.push({
+            name: item.name,
+            count: 1
+          })
+        }
+      }
+    }
+  }
+
+  //collect crops
+  for(const [index, queuedCrop] of gameState.cropFields.fields.entries()){
+    if(queuedCrop.completeTime > gameTime){ continue }
+    modifyStoredItemCount(gameState, "silo", queuedCrop.name, 1)
+    gameState.cropFields.fields.splice(index, 1)
+  }
+
+  //collect animals
+  for(const [index, animalProduct] of gameState.animals.chickens.entries()){
+    if(animalProduct.completeTime > gameTime){ continue }
+    modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
+    gameState.animals.chickens.splice(index, 1)
+  }
+  for(const [index, animalProduct] of gameState.animals.cows.entries()){
+    if(animalProduct.completeTime > gameTime){ continue }
+    modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
+    gameState.animals.cows.splice(index, 1)
+  }
+  for(const [index, animalProduct] of gameState.animals.pigs.entries()){
+    if(animalProduct.completeTime > gameTime){ continue }
+    modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
+    gameState.animals.pigs.splice(index, 1)
+  }
+  for(const [index, animalProduct] of gameState.animals.sheep.entries()){
+    if(animalProduct.completeTime > gameTime){ continue }
+    modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
+    gameState.animals.sheep.splice(index, 1)
+  }
+
+
+  //collect bushes/trees
+  // todo :)
+
+
+  return collected
+}
+
+function modifyStoredItemCount(gameState: GameState, type: "barn" | "silo", itemName: string, amount: number){
+  let container = type == "barn" ? gameState.barn.storage : gameState.silo.storage
+  let storageItem = container.find((x) => x.name == itemName)
+
+  if(storageItem){
+    storageItem.count += amount
+  } else {
+    storageItem = {
+      name: itemName,
+      count: amount
+    }
+    container.push(storageItem)
+  }
+
+  if(storageItem.count < 0){
+    throw new Error("modifyStoredItemCOunt: Some function subtracted more items than exist!")
+  }
+}
