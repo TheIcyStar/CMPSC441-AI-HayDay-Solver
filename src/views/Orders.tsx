@@ -93,6 +93,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
     setShowPopup(false);
   }
 
+  // 2-5 items with a quantity of 1-10 for each
   function handleRandomOrder() {
     if (selectedSlot === null) return;
     const numItems = Math.floor(Math.random() * 4) + 2;
@@ -133,9 +134,9 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
         </div>
       </div>
 
-          <div className="flex h-full overflow-hidden">
+    <div className="flex h-full overflow-hidden">
       {/* Left side - 3x3 grid */}
-      <div className="w-2/3 p-4 border-r border-gray-200">
+      <div className="w-2/3 p-4 border-r border-black">
         <div className="grid grid-cols-3 gap-4 h-full">
           {gameState.orders.map((order, index) => (
             <OrderSlotCard
@@ -179,8 +180,8 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
                         alt={getItemLabel(item.name)}
                         className="w-10 h-10 object-contain"
                       />
-                      <span className="text-xs text-gray-700">{getItemLabel(item.name)}</span>
-                      <span className={`text-xs font-medium ${colorClass}`}>
+                      <span className="text-sm text-gray-700">{getItemLabel(item.name)}</span>
+                      <span className={`text-sm font-medium ${colorClass}`}>
                         {have}/{item.count}
                       </span>
                     </button>
@@ -200,7 +201,7 @@ export default function Orders({ gameState, updateOrder }: OrdersProps) {
             </div>
 
             {/* Action buttons */}
-            <div className="mt-4 pt-4 border-t border-gray-200 flex gap-2">
+            <div className="mt-4 pt-4 border-t border-black flex gap-2">
               <button
                 onClick={handleRandomOrder}
                 className="flex-1 py-3 rounded-xl bg-yellow-100 hover:bg-yellow-200 flex flex-col items-center justify-center transition-colors"

@@ -59,7 +59,7 @@ export default function OrderSlotCard({ slotIndex, order, isSelected, onClick, g
                 const have = getInventoryCount(gameState, item.name);
                 const colorClass = getQuantityColor(have, item.count);
                 return (
-                <div key={idx} className="flex items-center w-full text-xs">
+                <div key={idx} className="flex items-center w-full text-sm">
                     <img
                     src={`./assets/items/${item.name}.png`}
                     alt={getItemLabel(item.name)}
@@ -73,7 +73,7 @@ export default function OrderSlotCard({ slotIndex, order, isSelected, onClick, g
             </div>
         </div>
         <div className="mt-2 pt-1 border-t border-gray-800 flex items-center justify-end gap-1">
-            <img src="./assets/miscellaneous/gold.png" alt="Gold" className="w-4 h-4" />
+            <img src="./assets/miscellaneous/gold.png" alt="Gold" className="w-6 h-6" />
             <span className="text-sm font-semibold text-gray-700">{order.goldPayout}</span>
         </div>
         </>
