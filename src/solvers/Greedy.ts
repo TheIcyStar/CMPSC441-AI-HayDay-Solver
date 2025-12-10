@@ -28,7 +28,19 @@ export function solve(startState: GameState): SolutionStep[] {
   }
 
   while(incompleteOrders.length > 0){
+    let newSolutionStep: SolutionStep = {
+      newQueueItems: [],
+      newProducedItems: [],
+      ordersComplete: [],
+      nextActionDelayMinutes: -1
+    }
 
+    //collect any ready items
+
+
+    //finish orders
+
+    // start new productions
     // Traverse the forest to all of the leaf nodes
     for(const order of incompleteOrders){
       for(const treeRoot of order.trees){
@@ -45,12 +57,30 @@ export function solve(startState: GameState): SolutionStep[] {
             }
 
             //we're at e leaf node, see if we can satisfy it
-            // canStartProduction(curGameState, prereq.)
+            const numItemsStarted = canStartProduction(curGameState, prereq.itemStack)
+            if(numItemsStarted == 0){
+              //Can't satisfy, skip
+              continue
+
+            } else if(numItemsStarted < prereq.itemStack.count){
+              //node partially satisfied
+              thisNode.itemStack.count -= numItemsStarted
+
+            } else if(numItemsStarted == prereq.itemStack.count && thisNode.parent) {
+              //node satisfied fully, remove it if it's in a parent's prereqs
+              const thisNodeIndex = thisNode.parent.prereqs.findIndex((x) => x == thisNode)
+              thisNode.parent.prereqs.splice(thisNodeIndex, 1)
+            }
+
+            solutionSteps.push()
+
           }
         }
 
       }
     }
+
+    //set a wait time
   }
 
   return solutionSteps
