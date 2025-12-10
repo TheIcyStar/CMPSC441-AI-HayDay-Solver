@@ -115,7 +115,7 @@ export function isCrop(itemName: string): itemName is Crop {
 }
 
 export function isFruitOrBerry(itemName: string): itemName is FruitOrBerry {
-  return Object.keys(BerryOrFruitInfo).includes(itemName)
+  return Object.keys(FruitOrBerryInfo).includes(itemName)
 }
 
 export function isAnimalProduct(itemName: string): itemName is AnimalProduct {
