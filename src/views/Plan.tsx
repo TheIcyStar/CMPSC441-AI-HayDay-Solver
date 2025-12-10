@@ -2,6 +2,7 @@ import type { GameState } from "../typedefs/GameTypes"
 import type { SolutionStep } from "../typedefs/SolverTypes"
 import { useState } from "react";
 import { solve as greedySolve } from "../solvers/Greedy"
+import PlanItemCard from "../components/PlanStepRecipe";
 
 type PlanProps = {
   gameState: GameState;
@@ -32,6 +33,7 @@ export default function Plan({ gameState }: PlanProps) {
               onClick={() => {
                 setSolverType(solver.type)
                 setSolution(solver.solver(gameState))
+                console.log(`The solution is`, solution)
               }}
               className={`
                 font-hayday text-lg py-2 px-4 mx-2 rounded-lg font-semibold transition-colors
@@ -52,6 +54,46 @@ export default function Plan({ gameState }: PlanProps) {
       <div className="flex-1 p-4 overflow-y-auto text-gray-500">
         {JSON.stringify(solution)}
       </div>
+
+      {/* <div>
+        <PlanItemCard
+          key={"Wheat"}
+          iconName={"Wheat"}
+          label={"Wheat"}
+          count={1}
+        >
+        </PlanItemCard>
+      </div> */}
+
+      <div className="flex gap-10">
+        {
+          solution.map((step) => (
+            <div className="flex">
+              {step["newQueueItems"].map((item) => (
+                // item.count > 0 
+                // ?
+                <PlanItemCard
+                  iconName={item.itemName}
+                  label={item.itemName}
+                  count={item.count}
+                >
+                </PlanItemCard>
+                // : <div>None</div>
+              ))}
+
+              <br/>
+              
+            </div>
+          ))
+        }
+      </div>
+
+      <button
+        onClick={() => {
+          console.log("hello there")
+        }}
+      >Push me loser</button>
+
     </div>
   );
 }
