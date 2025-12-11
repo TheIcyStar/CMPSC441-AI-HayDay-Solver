@@ -85,17 +85,22 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
 
   if(isAnimalProduct(itemStack.name)){
     let availableAnimals = 0
+    let maxFeed = 0
     if(itemStack.name == 'Egg'){
       availableAnimals = gameState.animals.numChickens - gameState.animals.chickens.length
+      maxFeed = gameState.barn.storage.find(x => x.name == "ChickenFeed")?.count || 0
     } else if(itemStack.name == 'Milk'){
       availableAnimals = gameState.animals.numCows - gameState.animals.cows.length
+      maxFeed = gameState.barn.storage.find(x => x.name == "CowFeed")?.count || 0
     } else if(itemStack.name == 'Bacon'){
       availableAnimals = gameState.animals.numPigs - gameState.animals.pigs.length
+      maxFeed = gameState.barn.storage.find(x => x.name == "PigFeed")?.count || 0
     } else if(itemStack.name == 'Wool'){
       availableAnimals = gameState.animals.numSheep - gameState.animals.sheep.length
+      maxFeed = gameState.barn.storage.find(x => x.name == "SheepFeed")?.count || 0
     }
 
-    return Math.min(availableAnimals, itemStack.count)
+    return Math.min(availableAnimals, maxFeed, itemStack.count)
   }
 
   if(isProduct(itemStack.name)){
@@ -152,38 +157,48 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
   }
 
   //collect crops
+  const cropSplices = []
   for(const [index, queuedCrop] of gameState.cropFields.fields.entries()){
     if(queuedCrop.completeTime > gameTime){ continue }
     collected.push({ name: queuedCrop.name, count: 2 })
     modifyStoredItemCount(gameState, "silo", queuedCrop.name, 2)
-    gameState.cropFields.fields.splice(index, 1)
+    cropSplices.push(index)
   }
+  cropSplices.forEach(i => gameState.cropFields.fields.splice(i, 1))
 
   //collect animals
+  let animalSplices = []
   for(const [index, animalProduct] of gameState.animals.chickens.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
     collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
-    gameState.animals.chickens.splice(index, 1)
+    animalSplices.push(index)
   }
+  animalSplices.forEach(i => gameState.animals.chickens.splice(i, 1))
+  animalSplices.length = 0
   for(const [index, animalProduct] of gameState.animals.cows.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
     collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
-    gameState.animals.cows.splice(index, 1)
+    animalSplices.push(index)
   }
+  animalSplices.forEach(i => gameState.animals.cows.splice(i, 1))
+  animalSplices.length = 0
   for(const [index, animalProduct] of gameState.animals.pigs.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
     collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
-    gameState.animals.pigs.splice(index, 1)
+    animalSplices.push(index)
   }
+  animalSplices.forEach(i => gameState.animals.pigs.splice(i, 1))
+  animalSplices.length = 0
   for(const [index, animalProduct] of gameState.animals.sheep.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
     collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
-    gameState.animals.sheep.splice(index, 1)
+    animalSplices.push(index)
   }
+  animalSplices.forEach(i => gameState.animals.sheep.splice(i, 1))
 
 
   //collect bushes/trees
