@@ -102,8 +102,8 @@ export default function Plan({ gameState }: PlanProps) {
   const [solution, setSolution] = useState<SolutionStep[]>([]);
 
   function handleSolve() {
-    const order = gameState.orders[selectedSlot];
-    setSolution(greedySolve(gameState, order));
+    // const order = gameState.orders[selectedSlot];
+    setSolution(greedySolve(gameState));
   }
 
   return (
