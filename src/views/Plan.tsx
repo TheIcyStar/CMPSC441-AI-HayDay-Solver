@@ -48,7 +48,6 @@ export default function Plan({ gameState }: PlanProps) {
         }
       </div>
 
-
       <div className="flex-1 p-4 overflow-y-auto text-gray-500">
         {JSON.stringify(solution)}
       </div>
