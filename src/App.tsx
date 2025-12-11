@@ -9,16 +9,16 @@ import Plan from "./views/Plan";
 const defaultGameState: GameState = {
   silo: {
     storage: [
-      { name: "Wheat", count: 10 },
-      { name: "Corn", count: 10 },
-      { name: "Soybean", count: 10 },
-      { name: "Sugarcane", count: 10 },
-      { name: "Carrot", count: 10 },
-      { name: "Indigo", count: 10 },
-      { name: "Pumpkin", count: 10 },
-      { name: "Cotton", count: 10 },
-      { name: "ChilliPepper", count: 10 },
-      { name: "Tomato", count: 10 },
+      { name: "Wheat", count: 25 },
+      { name: "Corn", count: 25 },
+      { name: "Soybean", count: 25 },
+      { name: "Sugarcane", count: 25 },
+      { name: "Carrot", count: 25 },
+      { name: "Indigo", count: 25 },
+      { name: "Pumpkin", count: 25 },
+      { name: "Cotton", count: 25 },
+      { name: "ChiliPepper", count: 25 },
+      { name: "Tomato", count: 25 },
     ],
     capacity: 500,
   },
@@ -33,7 +33,7 @@ const defaultGameState: GameState = {
   orders: Array(9).fill(null),
   cropFields: {
     fields: [],
-    maxCount: 10,
+    maxCount: 50,
   },
   bushesAndTrees: {
     planted: [],
