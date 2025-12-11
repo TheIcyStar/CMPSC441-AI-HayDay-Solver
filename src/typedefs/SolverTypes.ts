@@ -1,12 +1,8 @@
-import type { AnimalProduct, Crop, FruitOrBerry, Product,  } from "./GameData"
 import type { ItemStack } from "./GameTypes"
 
 export type SolutionStep = {
     // crops planted, productions started, etc
-    newQueueItems: {
-      itemName: AnimalProduct | Crop | FruitOrBerry | Product
-      count: number
-    }[]
+    newQueueItems: ItemStack[]
 
     // Items collected from crop fields, production buildings, etc
     newProducedItems: ItemStack[]
@@ -17,5 +13,5 @@ export type SolutionStep = {
     ordersComplete: number[]
 
     // time to wait
-    nextActionDelayMinutes: number //zero if last action
+    nextActionDelayMinutes: number | null
 }
