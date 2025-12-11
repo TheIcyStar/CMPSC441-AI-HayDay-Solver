@@ -1,23 +1,14 @@
 import type { SolutionStep } from "../typedefs/SolverTypes"
-import type { GameState, ItemStack, Order } from "../typedefs/GameTypes"
-import { buildPrerequisiteTree, canStartProduction, type ItemStackNode } from "./SolverUtils"
-import { isCrop } from "../typedefs/GameData"
-
-/* A "Greedy" algorithm that optimizes items with this priority:
-  1. A constant stock of X crops
-  2. A constant stock of Y animal products
-  3. A constant stock of Z common intermediate products:
-    - Diary products
-    - Sugar mill products
-  4. Items in truck orders
-*/
+import type { GameState, Order } from "../typedefs/GameTypes"
+import { buildPrerequisiteTree, canStartProduction, collectAllReadyItems, type ItemStackNode } from "./SolverUtils"
 
 
 export function solve(startState: GameState): SolutionStep[] {
-  let curGameState: GameState = JSON.parse(JSON.stringify(startState))
-  let solutionSteps: SolutionStep[] = []
+  const curGameState: GameState = JSON.parse(JSON.stringify(startState))
+  const curGameTime = 0
+  const solutionSteps: SolutionStep[] = []
 
-  let incompleteOrders: {trees: ItemStackNode[], order: Order}[] = []
+  const incompleteOrders: {trees: ItemStackNode[], order: Order}[] = []
   for(const order of curGameState.orders){
     if(order){
       incompleteOrders.push({
@@ -28,7 +19,7 @@ export function solve(startState: GameState): SolutionStep[] {
   }
 
   while(incompleteOrders.length > 0){
-    let newSolutionStep: SolutionStep = {
+    const newSolutionStep: SolutionStep = {
       newQueueItems: [],
       newProducedItems: [],
       ordersComplete: [],
@@ -36,16 +27,14 @@ export function solve(startState: GameState): SolutionStep[] {
     }
 
     //collect any ready items
+    newSolutionStep.newProducedItems = collectAllReadyItems(curGameState, curGameTime)
 
-
-    //finish orders
-
-    // start new productions
     // Traverse the forest to all of the leaf nodes
     for(const order of incompleteOrders){
       for(const treeRoot of order.trees){
-        let dfsStack = [treeRoot]
+        const dfsStack = [treeRoot]
 
+        // start new productions to satisfy the root
         while(dfsStack.length > 0){
           const thisNode = dfsStack.pop()!
 
@@ -68,16 +57,20 @@ export function solve(startState: GameState): SolutionStep[] {
 
             } else if(numItemsStarted == prereq.itemStack.count && thisNode.parent) {
               //node satisfied fully, remove it if it's in a parent's prereqs
-              const thisNodeIndex = thisNode.parent.prereqs.findIndex((x) => x == thisNode)
-              thisNode.parent.prereqs.splice(thisNodeIndex, 1)
+              thisNode.parent.prereqs.splice(index, 1)
             }
 
             solutionSteps.push()
 
           }
         }
-
       }
+
+      //Check if we can complete this order, after fulfilling the recipe trees
+
+
+
+
     }
 
     //set a wait time
