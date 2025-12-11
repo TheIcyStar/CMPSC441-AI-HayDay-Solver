@@ -1,7 +1,11 @@
 import type { SolutionStep } from "../typedefs/SolverTypes"
-import type { GameState } from "../typedefs/GameTypes"
+import type { GameState, Order } from "../typedefs/GameTypes"
 
-export function solve(_startState: GameState): SolutionStep[] {
+export function solve(_startState: GameState, order: Order | null): SolutionStep[] {
+  if (!order || order.items.length === 0) {
+    return []
+  }
+
   let solutionSteps: SolutionStep[] = []
 
   for (let i = 1; i < 3; i++) {
