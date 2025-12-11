@@ -76,7 +76,7 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
     const fieldsAvailable = gameState.cropFields.maxCount - gameState.cropFields.fields.length
     const currentStock = gameState.silo.storage.find((siloItem) => siloItem.name == itemStack.name)?.count
 
-    return Math.min(fieldsAvailable, currentStock || 0)
+    return Math.min(fieldsAvailable, currentStock || 0, itemStack.count)
   }
 
   if(isFruitOrBerry(itemStack.name)){
@@ -86,13 +86,13 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
   if(isAnimalProduct(itemStack.name)){
     let availableAnimals = 0
     if(itemStack.name == 'Egg'){
-      availableAnimals = gameState.animals.numChickens
+      availableAnimals = gameState.animals.numChickens - gameState.animals.chickens.length
     } else if(itemStack.name == 'Milk'){
-      availableAnimals = gameState.animals.numCows
+      availableAnimals = gameState.animals.numCows - gameState.animals.cows.length
     } else if(itemStack.name == 'Bacon'){
-      availableAnimals = gameState.animals.numPigs
+      availableAnimals = gameState.animals.numPigs - gameState.animals.pigs.length
     } else if(itemStack.name == 'Wool'){
-      availableAnimals = gameState.animals.numSheep
+      availableAnimals = gameState.animals.numSheep - gameState.animals.sheep.length
     }
 
     return Math.min(availableAnimals, itemStack.count)
@@ -154,28 +154,33 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
   //collect crops
   for(const [index, queuedCrop] of gameState.cropFields.fields.entries()){
     if(queuedCrop.completeTime > gameTime){ continue }
-    modifyStoredItemCount(gameState, "silo", queuedCrop.name, 1)
+    collected.push({ name: queuedCrop.name, count: 2 })
+    modifyStoredItemCount(gameState, "silo", queuedCrop.name, 2)
     gameState.cropFields.fields.splice(index, 1)
   }
 
   //collect animals
   for(const [index, animalProduct] of gameState.animals.chickens.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
+    collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
     gameState.animals.chickens.splice(index, 1)
   }
   for(const [index, animalProduct] of gameState.animals.cows.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
+    collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
     gameState.animals.cows.splice(index, 1)
   }
   for(const [index, animalProduct] of gameState.animals.pigs.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
+    collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
     gameState.animals.pigs.splice(index, 1)
   }
   for(const [index, animalProduct] of gameState.animals.sheep.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
+    collected.push({ name: animalProduct.name, count: 1 })
     modifyStoredItemCount(gameState, "barn", animalProduct.name, 1)
     gameState.animals.sheep.splice(index, 1)
   }
@@ -188,7 +193,7 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
   return collected
 }
 
-function modifyStoredItemCount(gameState: GameState, type: "barn" | "silo", itemName: string, amount: number){
+export function modifyStoredItemCount(gameState: GameState, type: "barn" | "silo", itemName: string, amount: number){
   const container = type == "barn" ? gameState.barn.storage : gameState.silo.storage
   let storageItem = container.find((x) => x.name == itemName)
 
