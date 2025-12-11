@@ -167,7 +167,7 @@ export function collectAllReadyItems(gameState: GameState, gameTime: number): It
   cropSplices.forEach(i => gameState.cropFields.fields.splice(i, 1))
 
   //collect animals
-  let animalSplices = []
+  const animalSplices = []
   for(const [index, animalProduct] of gameState.animals.chickens.entries()){
     if(animalProduct.completeTime > gameTime){ continue }
     collected.push({ name: animalProduct.name, count: 1 })

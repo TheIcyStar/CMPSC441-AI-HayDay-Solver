@@ -1,7 +1,7 @@
 import type { SolutionStep } from "../typedefs/SolverTypes"
 import type { GameState, Order } from "../typedefs/GameTypes"
 import { buildPrerequisiteTree, canStartProduction, collectAllReadyItems, modifyStoredItemCount, getNextEventTime, type ItemStackNode } from "./SolverUtils"
-import { AnimalInfo, CropInfo, FruitOrBerryInfo, isAnimalProduct, isCrop, isFruitOrBerry, isProduct, RecipeInfo, type Product } from "../typedefs/GameData"
+import { AnimalInfo, CropInfo, isAnimalProduct, isCrop, isFruitOrBerry, isProduct, RecipeInfo } from "../typedefs/GameData"
 
 
 export function solve(startState: GameState): SolutionStep[] {
@@ -89,7 +89,7 @@ export function solve(startState: GameState): SolutionStep[] {
           } else if(numItemsStarted == thisNode.itemStack.count) {
             //node satisfied fully, remove it if it's in a parent's prereqs
             if(thisNode.parent){
-              let thisNodeIndex = thisNode.parent.prereqs.findIndex(x => x == thisNode)
+              const thisNodeIndex = thisNode.parent.prereqs.findIndex(x => x == thisNode)
               thisNode.parent.prereqs.splice(thisNodeIndex, 1)
             } else {
               //root node, delete the tree
@@ -145,8 +145,8 @@ export function solve(startState: GameState): SolutionStep[] {
 
           } else if(isProduct(thisNode.itemStack.name)){
             timeCost = RecipeInfo[thisNode.itemStack.name].timeCost
-            let buildingName = RecipeInfo[thisNode.itemStack.name].building
-            let building = curGameState.productionBuildings.find((x) => x.name == buildingName)
+            const buildingName = RecipeInfo[thisNode.itemStack.name].building
+            const building = curGameState.productionBuildings.find((x) => x.name == buildingName)
             if(!building){
               throw new Error(`Solver: Failed to find building ${buildingName} for item: ${thisNode.itemStack.name} `)
             }
