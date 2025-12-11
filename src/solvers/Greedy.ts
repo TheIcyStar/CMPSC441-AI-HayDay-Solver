@@ -13,7 +13,7 @@ export function solve(_startState: GameState): SolutionStep[] {
       ],
 
       newProducedItems: [
-        { name: "bread", count: i}
+        { name: "Bread", count: i}
       ],
       ordersComplete: [],
       nextActionDelayMinutes: 2
