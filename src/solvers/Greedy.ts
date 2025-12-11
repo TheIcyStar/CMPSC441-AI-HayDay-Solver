@@ -1,6 +1,6 @@
 import type { SolutionStep } from "../typedefs/SolverTypes"
 import type { GameState, Order } from "../typedefs/GameTypes"
-import { buildPrerequisiteTree, canStartProduction, collectAllReadyItems, modifyStoredItemCount, type ItemStackNode } from "./SolverUtils"
+import { buildPrerequisiteTree, canStartProduction, collectAllReadyItems, modifyStoredItemCount, getNextEventTime, type ItemStackNode } from "./SolverUtils"
 import { AnimalInfo, CropInfo, FruitOrBerryInfo, isAnimalProduct, isCrop, isFruitOrBerry, isProduct, RecipeInfo, type Product } from "../typedefs/GameData"
 
 
@@ -61,7 +61,8 @@ export function solve(startState: GameState): SolutionStep[] {
       }
 
       // Traverse the order's forest to all of the leaf nodes
-      for(const treeRoot of order.trees){
+      let treeIndexOffset = 0 //hack to fix the terrible decision to use array.splice() with array.entries() for everything
+      for(const [treeIndex, treeRoot] of order.trees.entries()){
         const dfsStack = [treeRoot]
         while(dfsStack.length > 0){
           const thisNode = dfsStack.pop()!
@@ -90,9 +91,11 @@ export function solve(startState: GameState): SolutionStep[] {
             if(thisNode.parent){
               let thisNodeIndex = thisNode.parent.prereqs.findIndex(x => x == thisNode)
               thisNode.parent.prereqs.splice(thisNodeIndex, 1)
+            } else {
+              //root node, delete the tree
+              order.trees.splice(treeIndex - treeIndexOffset, 1)
+              treeIndexOffset += 1
             }
-            //left off: the root node of a recipe tree isn't being removed
-            //ex: bread
           }
 
 
@@ -111,7 +114,8 @@ export function solve(startState: GameState): SolutionStep[] {
             modifyStoredItemCount(curGameState, "silo", thisNode.itemStack.name, -numItemsStarted)
 
           } else if(isFruitOrBerry(thisNode.itemStack.name)){
-            timeCost = FruitOrBerryInfo[thisNode.itemStack.name]
+            // timeCost = FruitOrBerryInfo[thisNode.itemStack.name]
+            timeCost = 0
             //todo: bushes/berries :)
             modifyStoredItemCount(curGameState, "silo", thisNode.itemStack.name, numItemsStarted)
 
@@ -169,6 +173,17 @@ export function solve(startState: GameState): SolutionStep[] {
             timeCost || 0
           )
         }
+      }
+    }
+
+    // If we didn't start anything and didn't complete any orders, we need to wait for something to finish
+    if(newSolutionStep.newQueueItems.length === 0 && newSolutionStep.ordersComplete.length === 0){
+      const nextEventTime = getNextEventTime(curGameState, curGameTime)
+      if(nextEventTime !== null && nextEventTime > curGameTime){
+        newSolutionStep.nextActionDelayMinutes = nextEventTime - curGameTime
+      } else {
+        // Deadlock: nothing to do, nothing running.
+        break
       }
     }
 

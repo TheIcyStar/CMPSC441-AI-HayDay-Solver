@@ -80,7 +80,7 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
   }
 
   if(isFruitOrBerry(itemStack.name)){
-    //todo :)
+    return itemStack.count
   }
 
   if(isAnimalProduct(itemStack.name)){
@@ -106,12 +106,12 @@ export function canStartProduction(gameState: GameState, itemStack: ItemStack): 
   if(isProduct(itemStack.name)){
     for(const prereq of RecipeInfo[itemStack.name].ingredients){
       const maybeSiloItem = gameState.silo.storage.find((item) => item.name == prereq.item)
-      if(maybeSiloItem && maybeSiloItem.count > prereq.count){
+      if(maybeSiloItem && maybeSiloItem.count >= prereq.count){
         continue
       }
 
       const maybeBarnItem = gameState.barn.storage.find((item) => item.name == prereq.item)
-      if(maybeBarnItem && maybeBarnItem.count > prereq.count){
+      if(maybeBarnItem && maybeBarnItem.count >= prereq.count){
         continue
       }
 
@@ -225,4 +225,43 @@ export function modifyStoredItemCount(gameState: GameState, type: "barn" | "silo
   if(storageItem.count < 0){
     throw new Error("modifyStoredItemCOunt: Some function subtracted more items than exist!")
   }
+}
+
+export function getNextEventTime(gameState: GameState, curTime: number): number | null {
+  let nextTime = Infinity
+
+  // Check crops
+  for(const crop of gameState.cropFields.fields){
+    if(crop.completeTime > curTime){
+      nextTime = Math.min(nextTime, crop.completeTime)
+    }
+  }
+
+  // Check animals
+  const animalGroups = [
+    gameState.animals.chickens,
+    gameState.animals.cows,
+    gameState.animals.pigs,
+    gameState.animals.sheep
+  ]
+  for(const group of animalGroups){
+    for(const animal of group){
+      if(animal.completeTime > curTime){
+        nextTime = Math.min(nextTime, animal.completeTime)
+      }
+    }
+  }
+
+  // Check production buildings
+  for(const building of gameState.productionBuildings){
+    for(const queue of building.productionQueues){
+      for(const item of queue.queue){
+        if(item.completeTime > curTime){
+          nextTime = Math.min(nextTime, item.completeTime)
+        }
+      }
+    }
+  }
+
+  return nextTime === Infinity ? null : nextTime
 }
