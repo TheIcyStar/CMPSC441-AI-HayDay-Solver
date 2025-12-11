@@ -92,6 +92,7 @@ export function solve(startState: GameState): SolutionStep[] {
               thisNode.parent.prereqs.splice(thisNodeIndex, 1)
             }
             //left off: the root node of a recipe tree isn't being removed
+            //ex: bread
           }
 
 
