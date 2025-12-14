@@ -38,8 +38,7 @@ findings.
 ]
 
 #pagebreak()
-
-== 1. Project Background and Context
+== Project Background and Context
 Hay Day is a popular mobile farming game by Supercell that involves resource management, production planning, and order fulfillment. Players must manage their farm's inventory, produce goods through complex recipe chains, and complete customer orders to earn gold and progress in the game.
 
 === Relevance and Motivation
@@ -62,7 +61,9 @@ This problem is relevant to real-world applications in :
 3. Resource allocation and inventory management
 4. Minimize bottlenecks
 
-== 2. Methodology
+
+#pagebreak()
+== Methodology
 
 === AI Technique and Algorithm
 
@@ -81,9 +82,9 @@ This problem is relevant to real-world applications in :
 
 
 #pagebreak()
-== 3. Results & Demonstration
+== Results & Demonstration
 #show link: underline
-#link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")["Hay Day Demo Link"]
+#text(blue)[#link("https://theicystar.github.io/CMPSC441-AI-HayDay-Solver/")[Hay Day Solver Demo Link]]
 
 === Inventory
 #image("../public/assets/project-report/Inventory.png", width: 300pt)
@@ -98,18 +99,27 @@ The interface utilizes a tabbed navigation system, allowing users to switch view
 #pagebreak()
 == Conclusion
 === Challenges
-1. Efficiency of solving algorithms
-2. Managing large game data
-3. Data Modeling
+1. Data modeling 
+2. Acquiring game assets
+3. Managing large game data
+4. Efficiency of solving algorithms
+5. Time constraints and split focuses
 
 === Future Improvements
 #[
 
   #set par(first-line-indent: 3em)
-  Several enhancements are planned to expand the scope and depth of this project. The level cap will be increased to allow for more progression and gameplay variety. Additional game systems such as fishing and mining will be incorporated to create a richer simulation environment. The order mechanics will also be expanded to include more complex scenarios like time-limited boat orders. Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
-== References
+  Several enhancements are planned to expand the scope and depth of this project. Some of the planned content expansions include:
 
-1.
-2.
+  - Increasing the level cap to allow for more progression and gameplay variety. 
+  - Adding support for more game systems, such as fishing and mining, to create a richer simulation environment. 
+  - Expanding the order mechanics to include more complex scenarios like time-limited boat orders. 
+
+  Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
+
+=== Source Code
+See the project's GitHub page for source code:
+#text(blue)[#link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")[Hay Day Solver GitHub]]
+
 
 
