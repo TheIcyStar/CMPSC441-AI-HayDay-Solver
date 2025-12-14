@@ -65,11 +65,20 @@ This problem is relevant to real-world applications in :
 #pagebreak()
 == Methodology
 
+=== System Architecture
+- Need solver for one person
+- Simple to develop, simple to deploy, simple to use
+- No desktop app (user friction)
+- react as frontend
+- typescript for backend
+- Needs a lot of game data to function
+- internal model needs to mirror the game
+- solver needs to build on top of the model to produce solution
+- "state space" of possible decisions too large to traverse
+- a
+
 === AI Technique and Algorithm
 
-=== System Architecture
-=== DFS + Greedy
-- Build a reci
 
 === Technical Implementation
 *Technology Stack:*
@@ -99,7 +108,7 @@ The interface utilizes a tabbed navigation system, allowing users to switch view
 #pagebreak()
 == Conclusion
 === Challenges
-1. Data modeling 
+1. Data modeling
 2. Acquiring game assets
 3. Managing large game data
 4. Efficiency of solving algorithms
@@ -111,22 +120,22 @@ The interface utilizes a tabbed navigation system, allowing users to switch view
   #set par(first-line-indent: 3em)
   Several enhancements are planned to expand the scope and depth of this project. Some of the planned content expansions include:
 
-  - Increasing the level cap to allow for more progression and gameplay variety. 
-  - Adding support for more game systems, such as fishing and mining, to create a richer simulation environment. 
-  - Expanding the order mechanics to include more complex scenarios like time-limited boat orders. 
+  - Increasing the level cap to allow for more progression and gameplay variety.
+  - Adding support for more game systems, such as fishing and mining, to create a richer simulation environment.
+  - Expanding the order mechanics to include more complex scenarios like time-limited boat orders.
 
   Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
 
 === Key Insights
 #[
   #set par(first-line-indent: 3em)
-  From working on this solver for a mobile game, all group members were able to experience a new aspect of creating practically-applicable applications. Whether that experience was developing a good-looking frontend applications using React, modeling data handling after an existing process, deploying an app using GitHub's CI/CD process, collaborating on a project with other developers, or, more relavantly to this course, creating an AI solution algorithm to solve a practical problem, this project proved invaluable to all group members. 
+  From working on this solver for a mobile game, all group members were able to experience a new aspect of creating practically-applicable applications. Whether that experience was developing a good-looking frontend applications using React, modeling data handling after an existing process, deploying an app using GitHub's CI/CD process, collaborating on a project with other developers, or, more relavantly to this course, creating an AI solution algorithm to solve a practical problem, this project proved invaluable to all group members.
 ]
 
 === Contributions
 #[
   #set par(first-line-indent: 0em)
-  This application contributes to the Hay Day game's user experience by providing a tool users can use to optimize their production and time usage for the orders they have. Perhaps the user does not understand the production tree of some items, or want to figure out how to be more efficient on their farm. The Hay Day Solver app can be used to help exactly this. 
+  This application contributes to the Hay Day game's user experience by providing a tool users can use to optimize their production and time usage for the orders they have. Perhaps the user does not understand the production tree of some items, or want to figure out how to be more efficient on their farm. The Hay Day Solver app can be used to help exactly this.
 
   For the exact same purposes, this app contributes to the world at large by being a _solver_ for production tree optimization problems. It can be generalized in the future to function with real-world resources, production paths, and production orders. Other, more realistic constraints like monetary cost of steps could be added in the future. Overall, this solver is a great proof of concept and introductionary application to many real-world solutions.
 ]
@@ -135,5 +144,23 @@ The interface utilizes a tabbed navigation system, allowing users to switch view
 See the project's GitHub page for source code:
 #text(blue)[#link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")[Hay Day Solver GitHub]]
 
+1. Algorithm enhancements
+- Implement additiional solving algorithms (A\* Search, constraint statisfaction, genetic algorithms) for comparison
+- Develop more sophisticated greedy heuristics that consider time-to-completion and gold-per-minute metrics
+- Add backtracking capabilities for globally optimal solutions
 
+2. Game feature Expansion
+-
+
+3. User Experience
+- Visual timeline representation of production schedules
+- Interactive step-by step execution of production plans
+- Performance metrics and statistics tracking
+- Export/ Import functionality for sharing game states and solutions
+
+4. Analysis Tools
+- Perfomance benchmarking on various order scenarios
+- Comparative analysis between different solver algorithms
+- Bottleneck identification and visualization
+- Profitability analysis and order prioritization recommendations
 
