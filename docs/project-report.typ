@@ -1,10 +1,9 @@
 #set text(
   size: 12pt,
-  font: "Times New Roman"
-
+  font: "Times New Roman",
 )
 
-#set par(first-line-indent: 5em)  
+#set par(first-line-indent: 5em)
 
 #align(center)[
   #text(size: 16pt, strong("AI Hay Day Solver"))
@@ -25,17 +24,17 @@ findings.
 6. Source Code: Include all relevant Python or Java files as part of your submission*/
 //title and group members in the middle of the page
 #align(center + horizon)[
-*Group Members*
+  *Group Members*
 
-student-name-1 : Adam Che Nazahatuhisamudin
+  student-name-1 : Adam Che Nazahatuhisamudin
 
-student-name-2 : Alex Chmielowski
+  student-name-2 : Alex Chmielowski
 
-student-name-3 : Joseph Cooper
+  student-name-3 : Joseph Cooper
 
-student-name-4 : Alexander Petrov
+  student-name-4 : Alexander Petrov
 
-student-name-5 : Cheney Tai
+  student-name-5 : Cheney Tai
 ]
 
 #pagebreak()
@@ -61,14 +60,14 @@ This problem is relevant to real-world applications in :
 1. Create a web application
 2. Production scheduling accross multiple buildings
 3. Resource allocation and inventory management
-4. Minimize bottlenecks 
+4. Minimize bottlenecks
 
 == 2. Methodology
 
 === AI Technique and Algorithm
 
 === System Architecture
-  === DFS + Greedy 
+=== DFS + Greedy
 - Build a reci
 
 === Technical Implementation
@@ -78,15 +77,26 @@ This problem is relevant to real-world applications in :
 - Styling: Tailwind CSS
 - State Management: React hooks (useState, useEffect)
 - Type Safety: TypeScript with custom type definitions
+- Deployment: GitHub Pages and GitHub Actions
 
 
 #pagebreak()
-== 4. Results & Demonstration
+== 3. Results & Demonstration
 #show link: underline
 #link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")["Hay Day Demo Link"]
 
+=== Inventory
+#image("../public/assets/project-report/Inventory.png", width: 300pt)
+
+The Inventory module serves as the central data source for the AI solver, tracking the current state of farm resources. The system categorizes items into two distinct storage types:
+
+- Silo: Stores crops and raw materials
+- Barn: Stores processed products and resources
+
+The interface utilizes a tabbed navigation system, allowing users to switch views and modify item quantities. To enhance usability, a visual state indicator is implemented: items with a quantity of zero are displayed in grayscale. This allows users to instantly identify missing resources without needing to parse numerical values.
+
 #pagebreak()
-== Conclusion 
+== Conclusion
 === Challenges
 1. Efficiency of solving algorithms
 2. Managing large game data
@@ -95,11 +105,11 @@ This problem is relevant to real-world applications in :
 === Future Improvements
 #[
 
-  #set par(first-line-indent: 3em)  
-Several enhancements are planned to expand the scope and depth of this project. The level cap will be increased to allow for more progression and gameplay variety. Additional game systems such as fishing and mining will be incorporated to create a richer simulation environment. The order mechanics will also be expanded to include more complex scenarios like time-limited boat orders. Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
-== References 
+  #set par(first-line-indent: 3em)
+  Several enhancements are planned to expand the scope and depth of this project. The level cap will be increased to allow for more progression and gameplay variety. Additional game systems such as fishing and mining will be incorporated to create a richer simulation environment. The order mechanics will also be expanded to include more complex scenarios like time-limited boat orders. Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
+== References
 
-1. 
-2. 
+1.
+2.
 
 
