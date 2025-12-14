@@ -117,6 +117,12 @@ The interface utilizes a tabbed navigation system, allowing users to switch view
 
   Beyond content additions, the project will explore different solving algorithms and conduct a comparison analysis between them to evaluate their relative performance and efficiency.]
 
+=== Key insights
+#[
+  #set par(first-line-indent: 3em)
+  From working on this solver for a mobile game, all group members were able to experience a new aspect of creating practically-applicable applications. Whether that experience was developing a good-looking frontend applications using React, modeling data handling after an existing process, deploying an app using GitHub's CI/CD process, collaborating on a project with other developers, or, more relavantly to this course, creating an AI solution algorithm to solve a practical problem, this project proved invaluable to all group members. 
+]
+
 === Source Code
 See the project's GitHub page for source code:
 #text(blue)[#link("https://github.com/TheIcyStar/CMPSC441-AI-HayDay-Solver")[Hay Day Solver GitHub]]
