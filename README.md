@@ -1,5 +1,8 @@
 # CMPSC441-AI-HayDay-Solver
-Resource &amp; order fullfilment maximizer for Supercell's Hay Day
+Resource and order fullfilment maximizer for Supercell's Hay Day.
+Live demo: https://theicystar.github.io/CMPSC441-AI-HayDay-Solver/
+
+Note: Only a greedy solver is currently available.
 
 ## Documents
 Assignment-related Typst documents are in `docs/`. Opening this project in VSCode will recommend a Typst extension, which can be used to preview these documents.
@@ -22,6 +25,3 @@ npm install
 ```sh
 npm run dev
 ```
-
-### Debugging with VSCode
-You can do steps 3 and 4 by pressing F5 from your editor.
