@@ -98,11 +98,10 @@ function StepArrow({ minutes }: { minutes: number | null }) {
 }
 
 export default function Plan({ gameState }: PlanProps) {
-  const [selectedSlot, setSelectedSlot] = useState<number>(0);
   const [solution, setSolution] = useState<SolutionStep[]>([]);
 
   function handleSolve() {
-    // const order = gameState.orders[selectedSlot];
+    //Any other new solvers can be added here...
     setSolution(greedySolve(gameState));
   }
 
@@ -114,17 +113,6 @@ export default function Plan({ gameState }: PlanProps) {
           <span className="font-hayday text-2xl text-gray-800">Plan</span>
         </div>
         <div className="flex items-center gap-3">
-          <select
-            value={selectedSlot}
-            onChange={(e) => setSelectedSlot(Number(e.target.value))}
-            className="font-hayday text-lg py-2 px-4 rounded-lg border border-gray-300 bg-white text-gray-800 focus:outline-none focus:border-amber-400"
-          >
-            {gameState.orders.map((order, index) => (
-              <option key={index} value={index}>
-                Slot {index + 1} {order ? "" : "(Empty)"}
-              </option>
-            ))}
-          </select>
           <button
             onClick={handleSolve}
             className="font-hayday text-lg py-2 px-4 rounded-lg font-semibold transition-colors bg-amber-500 text-white hover:bg-amber-600"
